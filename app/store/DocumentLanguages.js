@@ -57,7 +57,7 @@ Ext.define('LIME.store.DocumentLanguages', {
     
     proxy : {
         type : 'ajax',
-        url : 'config/locale/languages.json',
+        url : Ext.Loader.getPath('LIME.config.locale/languages').replace('.js', '.json'),
         reader : {
             type : 'json',
             root : 'languages'

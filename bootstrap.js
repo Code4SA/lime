@@ -44,7 +44,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.ux.form.SearchField": "ext/src/ux/form/SearchField.js",
   "Ext.ux.grid": "ext/src/ux/grid",
   "Ext.ux.layout": "ext/src/ux/layout",
-  "Ext.ux.layout.component.field.CodeMirror": "plugins/ux/form/field/CodeMirror.js",
+  "Ext.ux.layout.component.field.CodeMirror": "/static/lime/plugins/ux/form/field/CodeMirror.js",
   "Ext.ux.statusbar": "ext/src/ux/statusbar",
   "Ext.ux.upload.Model": "plugins/ux/upload/Basic.js",
   "LIME": "app"
@@ -2214,7 +2214,7 @@ Ext.setVersion("ext-theme-neutral", "4.2.1");
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', 'bootstrap.json', false);
+    xhr.open('GET', '/static/lime/bootstrap.json', false);
     xhr.send(null);
 
     var options = eval("(" + xhr.responseText + ")"),

@@ -46,6 +46,7 @@
 
 Ext.define('LIME.Application', {
     name: 'LIME',
+    appFolder: '/static/lime/app',
 
     extend: 'Ext.app.Application',
 

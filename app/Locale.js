@@ -84,8 +84,8 @@ Ext.define('LIME.Locale', {
     },
     
     loadLanguage: function() {
-        var langUrl = 'config/locale/lang-'+this.config.lang+'.json';
-        var extLangUrl = 'config/locale/ext/ext-lang-'+this.config.lang+'.js';
+        var langUrl = Ext.Loader.getPath('LIME.config.locale/lang-'+this.config.lang).replace('.js', '.json');
+        var extLangUrl = Ext.Loader.getPath('LIME.config.locale/ext/ext-lang-'+this.config.lang);
         Ext.Ajax.request({
             url : langUrl,
             async: false,

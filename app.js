@@ -55,9 +55,18 @@
 Ext.Loader.setConfig({
     enabled : true,
     paths   : {
-        'LIME' : 'app',
-        'LIME.conf' : 'config',
-        'Ext.ux' : 'plugins/ux'
+        'LIME' : '/static/lime/app',
+        'LIME.config' : '/static/lime/config',
+        'LIME.ux' : '/static/lime/languagesPlugin',
+        'LIME.conf' : '/static/lime/config',
+        'Ext' : '/static/lime/ext/src',
+	'Ext.ux.layout.component.field.CodeMirror': '/static/lime/plugins/ux/form/field/CodeMirror.js',
+	'Ext.ux.form.field': '/static/lime/plugins/ux/form/field',
+	'Ext.ux.Iframe': '/static/lime/plugins/ux/Iframe.js',
+	'Ext.ux.DownloadManager': '/static/lime/plugins/ux/DownloadManager.js',
+	'Ext.ux.window.Notification': '/static/lime/plugins/ux/window/Notification.js',
+	'Ext.ux.TabCloseMenuImproved': '/static/lime/plugins/ux/TabCloseMenuImproved.js',
+	'Ext.ux.upload': '/static/lime/plugins/ux/upload',
     }
 });
 
@@ -67,6 +76,7 @@ Config.load();
 
 Ext.require([
     'Ext.ux.window.Notification',
+	'Ext.ux.Iframe',
 	'Ext.ux.form.field.TinyMCE',
 	'Ext.ux.form.field.TinyMCEWindowManager',
 	'Ext.ux.form.field.CodeMirror',
@@ -81,6 +91,7 @@ Ext.require([
 
 Ext.application({
     name: 'LIME',
+    appFolder: '/static/lime/app',
 
     extend: 'LIME.Application',
     
@@ -89,7 +100,7 @@ Ext.application({
 		this.callParent();
 		
 		// Remove the loading icon
-		var loadingDiv = Ext.query('#loading')[0];
-		loadingDiv.parentNode.removeChild(loadingDiv);
+		//var loadingDiv = Ext.query('#loading')[0];
+		//loadingDiv.parentNode.removeChild(loadingDiv);
 	}
 });

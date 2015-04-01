@@ -55,7 +55,7 @@ Ext.define('LIME.controller.LoginManager', {
 	views : ['modal.Login', 'modal.Registration', 'maintoolbar.UserButton'],
 	
 	refs : [{
-		selector : 'viewport',
+		selector : '#viewport',
 		ref : 'viewport'
 	},{
         selector : 'login',
@@ -391,7 +391,7 @@ Ext.define('LIME.controller.LoginManager', {
 	init : function() {
         var loginManager = this;
         this.control({
-            'viewport': {
+            '#viewport': {
                 render: function(cmp) {
                     this.showLogin();
                 }
@@ -411,7 +411,9 @@ Ext.define('LIME.controller.LoginManager', {
             },
             'login button': {
                 click: function(cmp) {
-                    this.prepareLogin();
+                    //this.prepareLogin();
+                    this.getLogin().hide();
+                    this.startEditor();
                 }
             },
             'box[cls=registration]': {

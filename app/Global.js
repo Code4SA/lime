@@ -57,7 +57,7 @@ Ext.define('LIME.Global', {
 
     language : 'default',
 
-    pluginBaseDir : 'languagesPlugins',
+    pluginBaseDir : '/static/lime/languagesPlugins',
 
     pluginClientLibs : 'client',
 
@@ -97,7 +97,7 @@ Ext.define('LIME.Global', {
         Ext.syncRequire(this.getDependences());
         // Loading the language plugin configuration file
         Ext.Ajax.request({
-            url : 'languagesPlugins/config.json',
+            url : this.pluginBaseDir + '/config.json',
             async: false,
             scope: this,
             success : function(response, opts) {

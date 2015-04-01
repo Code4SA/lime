@@ -48,7 +48,7 @@
  * The main viewport of the application. It contains all the other views.
  */
 Ext.define('LIME.view.Viewport', {
-    extend : 'Ext.container.Viewport',
+    extend : 'Ext.container.Container',
 
     alias : 'widget.appViewport',
 
@@ -59,6 +59,15 @@ Ext.define('LIME.view.Viewport', {
     },
 
     layout : 'border',
+    renderTo : Ext.get('lime'),
+    id: 'viewport',
+
+    listeners: {
+        beforerender: function () {
+            this.setHeight(Ext.get("lime").getHeight());
+            this.doLayout();
+        }
+    },
 
     commonItems : [{
         xtype : 'progressWindow'
