@@ -64,9 +64,13 @@ Ext.define('LIME.view.Viewport', {
 
     listeners: {
         beforerender: function () {
-            this.setHeight(Ext.get("lime").getHeight());
-            this.doLayout();
+            this.fireResize();
+            Ext.EventManager.onWindowResize(this.fireResize, this);
         }
+    },
+
+    fireResize : function() {
+        this.setSize(this.renderTo.getWidth(), this.renderTo.getHeight());
     },
 
     commonItems : [{
