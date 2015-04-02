@@ -56,7 +56,6 @@ Ext.Loader.setConfig({
     enabled : true,
     paths   : {
         'LIME' : '/static/lime/app',
-        'LIME.config' : '/static/lime/config',
         'LIME.ux' : '/static/lime/languagesPlugin',
         'LIME.conf' : '/static/lime/config',
         'Ext' : '/static/lime/ext/src',
@@ -70,7 +69,7 @@ Ext.Loader.setConfig({
     }
 });
 
-Ext.syncRequire(['LIME.Locale','LIME.Global']);
+Ext.syncRequire(['LIME.Global','LIME.Locale']);
 
 Config.load();
 

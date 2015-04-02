@@ -59,7 +59,7 @@ Ext.define('LIME.store.Nationalities', {
     
     proxy : {
         type : 'ajax',
-        url : Ext.Loader.getPath('LIME.config.locale/countries').replace('.js', '.json'),
+        url : Config.configBaseDir + '/locale/countries.json',
         reader : {
             type : 'json',
             root : 'countries'

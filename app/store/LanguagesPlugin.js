@@ -56,7 +56,7 @@ Ext.define('LIME.store.LanguagesPlugin', {
     /* Directories structure */
     baseDirectories : {
         plugins : Config.pluginBaseDir,
-        global : "config"
+        global : Config.configBaseDir,
     },
     
     styleFile: 'content.css',
