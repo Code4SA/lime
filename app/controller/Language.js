@@ -84,6 +84,7 @@ Ext.define('LIME.controller.Language', {
         frbrDom = frbrDom || DocProperties.frbrDom;
 
         if (frbrDom) {
+            // copy the metadata tree into the HTML tree if it's not already there
             var root = tmpElement.querySelector("*["+DocProperties.docIdAttribute+"]") 
                         || tmpElement.querySelector(".document");
             var metaDom = Ext.clone(frbrDom);
@@ -110,6 +111,7 @@ Ext.define('LIME.controller.Language', {
             
             //Apply rules for all marked elements
             Ext.each(markedElements, function(element) {
+                // recalculate internal element IDs and update internal hrefs
                 var intId = element.getAttribute(DomUtils.elementIdAttribute), newId,
                     hrefElements = tmpElement.querySelectorAll("*["+langPrefix+"href *= '#"+intId+"']");
                 
