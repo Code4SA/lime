@@ -155,12 +155,14 @@ Ext.define('LIME.controller.Language', {
         tmpHtml = tmpHtml.replace(/(class=\"[^\"]+)(\s+\bfocused\")/g, '$1"');
 
         Language.translateContent(tmpHtml, DocProperties.documentInfo.docMarkingLanguage, {
-            success : function(response) {
-                // pretty print the code because codemirror is not enough
-                var xmlPretty = vkbeautify.xml(response.responseText);
+            success : function(xml) {
+                if (params.serialize) {
+                    // pretty print the code because codemirror is not enough
+                    xml = vkbeautify.xml(xml.innerHTML);
+                }
                 
                 if (Ext.isFunction(callback)) {
-                    callback.call(languageController, xmlPretty, aknIdMapping);
+                    callback.call(languageController, xml, aknIdMapping);
                 }
                 if (view && Ext.isFunction(view.setLoading)) {
                     view.setLoading(false);

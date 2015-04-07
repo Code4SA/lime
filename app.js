@@ -85,7 +85,8 @@ Ext.require([
 	'LIME.DocProperties',
     'LIME.DomUtils',
     'LIME.Server',
-	'LIME.Interpreters'
+	'LIME.Interpreters',
+	'LIME.XsltTransforms',
 ]);
 
 Ext.application({

@@ -125,22 +125,8 @@ Ext.define('LIME.ux.Language', {
                 includeFiles : Config.getLocaleXslPath()
             });
         }
-        //Calling the translate service
-        Ext.Ajax.request({
-            // the url of the web service
-            url : Utilities.getAjaxUrl(),
-            method : 'POST',
-            // send the content in XML format
-            params : params,
-            scope : this,
-            // if the translation was performed
-            success : function(result, request) {
-                if (Ext.isFunction(callbacks.success)) {
-                    callbacks.success(result);
-                }
-            },
-            failure : callbacks.failure
-        });
+
+        XsltTransforms.transform(content, params, callbacks);
     },
 
     needsElementId: function(elName, button) {
