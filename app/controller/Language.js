@@ -158,7 +158,7 @@ Ext.define('LIME.controller.Language', {
             success : function(xml) {
                 if (params.serialize) {
                     // pretty print the code because codemirror is not enough
-                    xml = vkbeautify.xml(xml.innerHTML);
+                    xml = vkbeautify.xml(new XMLSerializer().serializeToString(xml));
                 }
                 
                 if (Ext.isFunction(callback)) {
@@ -182,7 +182,7 @@ Ext.define('LIME.controller.Language', {
             beforeTranslate = TranslatePlugin.beforeTranslate,
         //removing all ext generated ids
         editorContent = editorController.getContent(false, cmp).replace(/id="ext-gen(\d)+"/g, ""), 
-        params = {}, newParams, newFn;
+        params = {serialize: true}, newParams, newFn;
         
         if (view && Ext.isFunction(view.setLoading)) {
             view.setLoading(true);

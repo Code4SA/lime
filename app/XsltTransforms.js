@@ -65,15 +65,8 @@ Ext.define('LIME.XsltTransforms', {
      * Params supports:
      *
      *   transformFile: the URL of the XSLT file
-     *   serialize: should the result be serialized to text, or should
-     *              the transformed document element be returned?
-     *              Default: true
      */
     transform: function(input, params, callbacks) {
-        params = Ext.merge({
-            serialize: true,
-        }, params);
-
         if (this.useLocalTransforms()) {
             this.transformLocally(input, params, callbacks);
         } else {
@@ -88,7 +81,7 @@ Ext.define('LIME.XsltTransforms', {
 
     /** Are local transforms supported? **/
     supportsLocal: function() {
-        return typeof("XSLTProcessor") != "undefined" && typeof("XMLSerializer") != "undefined";
+        return typeof("XSLTProcessor") != "undefined";
     },
 
     loadTransform: function(url, success, failure) {
@@ -117,9 +110,6 @@ Ext.define('LIME.XsltTransforms', {
             }); 
 
             var output = xslt.transformToFragment(root.firstChild, document);
-            if (params.serialize) {
-                output = new XMLSerializer().serializeToString(output);
-            }
             callbacks.success(output);
         }, callbacks.failure);
     },
@@ -139,13 +129,7 @@ Ext.define('LIME.XsltTransforms', {
             scope : this,
             // if the translation was performed
             success : function(result, request) {
-                var xml = result.responseText;
-
-                // de-serialize?
-                if (!params.serialize) {
-                    xml = Utilities.parseXml(xml);
-                }
-
+                var xml = Utilities.parseXml(result.responseText);
                 callbacks.success(xml);
             },
             failure : callbacks.failure
