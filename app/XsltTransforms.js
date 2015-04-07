@@ -60,17 +60,18 @@ Ext.define('LIME.XsltTransforms', {
 
     /**
      * Transform +source+ using the transform described in +params+
-     * and call +callbacks+ on success or failure. This may be asynchronous.
+     * and call +success+ on success or +failure+ on failure. This may be
+     * asynchronous.
      *
      * Params supports:
      *
      *   transformFile: the URL of the XSLT file
      */
-    transform: function(input, params, callbacks) {
+    transform: function(input, xsltfile, params, success, failure) {
         if (this.useLocalTransforms()) {
-            this.transformLocally(input, params, callbacks);
+            this.transformLocally(input, xsltfile, params, success, failure);
         } else {
-            this.transformRemotely(input, params, callbacks);
+            this.transformRemotely(input, xsltfile, params, success, failure);
         }
     },
 
@@ -102,37 +103,24 @@ Ext.define('LIME.XsltTransforms', {
         }
     },
 
-    transformLocally: function(input, params, callbacks) {
-        this.loadTransform(params.transformFile, function(xslt) {
-            var root = Ext.DomHelper.createDom({
+    transformLocally: function(input, xsltfile, params, success, failure) {
+        if (typeof(input) == "string") {
+            input = Ext.DomHelper.createDom({
                 tag : 'div',
                 html : input.replace(/\xa0/g, ' '),   // ignore &nbsp; chars
-            }); 
+            }).firstChild;
+        }
 
-            var output = xslt.transformToFragment(root.firstChild, document);
-            callbacks.success(output);
-        }, callbacks.failure);
+        this.loadTransform(xsltfile, function(xslt) {
+            var output = xslt.transformToFragment(input, document);
+            success(output);
+        }, failure);
     },
 
-    transformRemotely: function(input, params, callbacks) {
-        Ext.merge(params, {
-            requestedService : Statics.services.xsltTrasform,
-            input : input,
-        });
-
-        Ext.Ajax.request({
-            // the url of the web service
-            url : Utilities.getAjaxUrl(),
-            method : 'POST',
-            // send the content in XML format
-            params : params,
-            scope : this,
-            // if the translation was performed
-            success : function(result, request) {
-                var xml = Utilities.parseXml(result.responseText);
-                callbacks.success(xml);
-            },
-            failure : callbacks.failure
-        });
+    transformRemotely: function(input, xslt, params, success, failure) {
+        Server.applyXslt(input, xslt, function(xml) {
+            // parse XML
+            success(Utilities.parseXml(result.responseText));
+        }, failure, params);
     }
 });

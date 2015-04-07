@@ -114,19 +114,11 @@ Ext.define('LIME.ux.Language', {
      */
     translateContent : function(content, markingLanguage, callbacks) {
         var params = {
-            requestedService : Statics.services.xsltTrasform,
             output : 'akn',
-            input : content,
             markingLanguage : markingLanguage
         }, transformFile = Config.getLanguageTransformationFile("LIMEtoLanguage");
-        if (transformFile) {
-            params = Ext.merge(params, {
-                transformFile : transformFile,
-                includeFiles : Config.getLocaleXslPath()
-            });
-        }
 
-        XsltTransforms.transform(content, params, callbacks);
+        XsltTransforms.transform(content, transformFile, params, callbacks.success, callbacks.failure);
     },
 
     needsElementId: function(elName, button) {
