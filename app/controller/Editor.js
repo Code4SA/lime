@@ -1163,7 +1163,7 @@ Ext.define('LIME.controller.Editor', {
                 nonbreaking_force_tab: true,
                 statusbar : false,
                 // the enabled plugins in the editor
-                plugins : "compat3x, code, tinyautosave, table, link, image, searchreplace, jbimages, paste, noneditable",
+                plugins : "compat3x, code, table, link, image, searchreplace, jbimages, paste, noneditable",
 
                 noneditable_leave_contenteditable: true,
 
