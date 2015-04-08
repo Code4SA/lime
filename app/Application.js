@@ -97,6 +97,9 @@ Ext.define('LIME.Application', {
 	        this.getStore('MarkupLanguages').loadData(Config.languages);
 			this.viewport = Ext.create('LIME.view.Viewport');
 			this.viewport.showEditor();
+
+			// hide the toolbar
+			this.getMainToolbarController().getMainToolbar().setVisible(false);
 	    }
 	},
 
