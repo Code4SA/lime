@@ -95,10 +95,12 @@ Ext.define('LIME.Application', {
 	        Ext.defer(this.secureLaunch, 100, this);
 	    } else {
 	        this.getStore('MarkupLanguages').loadData(Config.languages);
-
-		var viewport = Ext.create('LIME.view.Viewport');
-		items = Ext.Array.merge(viewport.editorItems, viewport.commonItems);
-		viewport.add(items);
+			this.viewport = Ext.create('LIME.view.Viewport');
+			this.viewport.showEditor();
 	    }
-	}
+	},
+
+	resize: function() {
+		this.viewport.fireResize();
+	},
 });

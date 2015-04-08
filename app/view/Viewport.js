@@ -73,6 +73,19 @@ Ext.define('LIME.view.Viewport', {
         this.setSize(this.renderTo.getWidth(), this.renderTo.getHeight());
     },
 
+    /**
+     * Show the editor view
+     */
+    showEditor : function() {
+        this.clear();
+		var items = Ext.Array.merge(this.editorItems, this.commonItems);
+		this.add(items);
+    },
+
+    clear : function() {
+	   this.removeAll(true);
+    },
+
     commonItems : [{
         xtype : 'progressWindow'
     }],
