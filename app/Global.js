@@ -57,6 +57,8 @@ Ext.define('LIME.Global', {
 
     language : 'default',
 
+    baseDir : '/static/lime',
+
     pluginBaseDir : '/static/lime/languagesPlugins',
 
     configBaseDir : '/static/lime/config',
