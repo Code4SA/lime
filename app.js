@@ -51,6 +51,7 @@
     Sencha Cmd when upgrading.
 */
 
+var WaweDebug = false;
 
 Ext.Loader.setConfig({
     enabled : true,
