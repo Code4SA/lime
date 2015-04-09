@@ -112,7 +112,7 @@ Ext.define('LIME.XsltTransforms', {
         }
 
         this.loadTransform(xsltfile, function(xslt) {
-            var output = xslt.transformToFragment(input, document);
+            var output = xslt.transformToDocument(input);
             success(output);
         }, failure);
     },
