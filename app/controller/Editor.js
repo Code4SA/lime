@@ -683,18 +683,11 @@ Ext.define('LIME.controller.Editor', {
 		}
 	},
 
-	onPluginLoaded : function(data, styleUrls) {
+	onPluginLoaded : function(data) {
 	    var markingMenuController = this.getController('MarkingMenu'),
 	    	mainToolbarController = this.getController('MainToolbar'),
 	       app = this.application, config = this.documentTempConfig;
         
-        this.stylesUrl = styleUrls || this.stylesUrl;
-
-	    this.addStyles(styleUrls);
-        var editor2 = this.getSecondEditor();
-        if (editor2) {
-            this.addStyles(styleUrls, editor2);
-        }
 		app.fireEvent(Statics.eventsNames.languageLoaded, data);
         app.fireEvent(Statics.eventsNames.progressUpdate, Locale.strings.progressBar.loadingDocument);
         this.loadDocument(config.docText, config.docId);
@@ -705,11 +698,20 @@ Ext.define('LIME.controller.Editor', {
         this.showDocumentUri(config.docId);
     },
 
+    setStyles: function(urls) {
+		this.styleUrls = urls || this.styleUrls;
+
+		this.addStyles(this.styleUrls);
+		var editor2 = this.getSecondEditor();
+		if (editor2) {
+			this.addStyles(this.styleUrls, editor2);
+		}
+    },
+
     addStyles: function(urls, editor) {
         var me = this, editorDom = me.getDom(editor),
             head = editorDom.querySelector("head");
 
-        urls = urls || me.stylesUrl;
         if ( urls && urls.length ) {
             Ext.each(head.querySelectorAll('.limeStyle'), function(styleNode) {
                 head.removeChild(styleNode);

@@ -170,7 +170,7 @@ Ext.define('LIME.store.LanguagesPlugin', {
             }
         });
             
-        me.fireEvent('filesloaded', me.dataObjects, me.styleUrls.map(function(el) {return el.url;}));
+        me.fireEvent('filesloaded', me.dataObjects);
         me.lastConfiguration.loaded = true;
         app.fireEvent(Statics.eventsNames.progressUpdate, Locale.strings.progressBar.configurationFiles);
     },
@@ -265,13 +265,16 @@ Ext.define('LIME.store.LanguagesPlugin', {
                 }
             }
         }
+        // tell the editor to load the style files
+        app.getEditorController().setStyles(styleUrls.map(function(el) {return el.url;}));
+
+        // bulk load plugin files
         me.reqUrls = reqUrls;
-        Utilities.filterUrls(styleUrls, false, me.setStyleAndRequestFiles, me.setStyleAndRequestFiles, me);
+        me.requestFiles();
     },
     
-    setStyleAndRequestFiles: function(styleUrls) {
+    requestFiles: function() {
         var me = this;
-        me.styleUrls = styleUrls;
         Utilities.filterUrls(me.reqUrls, true, me.requestSyncLoader, function(reqUrls) {
             for (objIndex in reqUrls) {
                 /* Add a lister that waits for the given key file to be loaded */
