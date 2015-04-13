@@ -47,6 +47,7 @@
 Ext.define('LIME.Locale', {
     singleton : true,
     alternateClassName : 'Locale',
+    requires: ['LIME.Global'],
 
 	config: {
 		lang : 'en',
