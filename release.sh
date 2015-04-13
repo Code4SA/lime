@@ -4,7 +4,6 @@
 
 git diff --exit-code || (echo "You have unstaged changes, please commit and try again."; exit 1;)
 
-git rm -rf dist
 rm -rf dist
 mkdir dist
 
