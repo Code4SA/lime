@@ -57,11 +57,15 @@ Ext.define('LIME.Global', {
 
     language : 'default',
 
-    baseDir : '/static/lime',
+    // LIME base URL. Leave blank for the path at which the app page is loaded.
+    // The LIME_base_url variable is injected by app.js.
+    baseUrl : LIME_base_url,
 
-    pluginBaseDir : '/static/lime/languagesPlugins',
+    // relative to baseUrl
+    pluginBaseDir : 'languagesPlugins',
 
-    configBaseDir : '/static/lime/config',
+    // relative to baseUrl
+    configBaseDir : 'config',
 
     pluginClientLibs : 'client',
 
@@ -92,6 +96,11 @@ Ext.define('LIME.Global', {
         return Ext.Array.map(this.extensionScripts, function(script) {
             return this.uxPath + "." + script;
         }, this);
+    },
+
+    constructor: function() {
+        this.pluginBaseDir = this.baseUrl + this.pluginBaseDir;
+        this.configBaseDir = this.baseUrl + this.configBaseDir;
     },
 
     load : function() {

@@ -46,7 +46,8 @@
 
 Ext.define('LIME.Application', {
     name: 'LIME',
-    appFolder: '/static/lime/app',
+    // this is injected by app.js
+    appFolder: LIME_app,
 
     extend: 'Ext.app.Application',
 

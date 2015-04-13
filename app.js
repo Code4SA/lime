@@ -53,25 +53,33 @@
 
 var WaweDebug = false;
 
+// Extjs makes the assumption that both in development and in production all the files
+// we'll be loading we'll load from the same path as the currently loaded page. For
+// Indigo, that's a bad assumption. So the LIME_base_url variable gives us a way
+// to change that.
+if (typeof(LIME_base_url) == 'undefined') {
+    var LIME_base_url = '';
+}
+var LIME_app = LIME_base_url + 'app';
+
 Ext.Loader.setConfig({
     enabled : true,
     paths   : {
-        'LIME' : '/static/lime/app',
-        'LIME.ux' : '/static/lime/languagesPlugin',
-        'LIME.conf' : '/static/lime/config',
-        'Ext' : '/static/lime/ext/src',
-	'Ext.ux.layout.component.field.CodeMirror': '/static/lime/plugins/ux/form/field/CodeMirror.js',
-	'Ext.ux.form.field': '/static/lime/plugins/ux/form/field',
-	'Ext.ux.Iframe': '/static/lime/plugins/ux/Iframe.js',
-	'Ext.ux.DownloadManager': '/static/lime/plugins/ux/DownloadManager.js',
-	'Ext.ux.window.Notification': '/static/lime/plugins/ux/window/Notification.js',
-	'Ext.ux.TabCloseMenuImproved': '/static/lime/plugins/ux/TabCloseMenuImproved.js',
-	'Ext.ux.upload': '/static/lime/plugins/ux/upload',
+        'LIME' : LIME_app,
+        'LIME.ux' : LIME_base_url + 'languagesPlugin',
+        'LIME.conf' : LIME_base_url + 'config',
+        'Ext' : LIME_base_url + 'ext/src',
+	'Ext.ux.layout.component.field.CodeMirror': LIME_base_url + 'plugins/ux/form/field/CodeMirror.js',
+	'Ext.ux.form.field': LIME_base_url + 'plugins/ux/form/field',
+	'Ext.ux.Iframe': LIME_base_url + 'plugins/ux/Iframe.js',
+	'Ext.ux.DownloadManager': LIME_base_url + 'plugins/ux/DownloadManager.js',
+	'Ext.ux.window.Notification': LIME_base_url + 'plugins/ux/window/Notification.js',
+	'Ext.ux.TabCloseMenuImproved': LIME_base_url + 'plugins/ux/TabCloseMenuImproved.js',
+	'Ext.ux.upload': LIME_base_url + 'plugins/ux/upload',
     }
 });
 
 Ext.syncRequire(['LIME.Global','LIME.Locale']);
-
 Config.load();
 
 Ext.require([
@@ -92,16 +100,7 @@ Ext.require([
 
 Ext.application({
     name: 'LIME',
-    appFolder: '/static/lime/app',
+    appFolder: LIME_app,
 
     extend: 'LIME.Application',
-    
-    launch : function() {
-		// First call the parent launch method
-		this.callParent();
-		
-		// Remove the loading icon
-		//var loadingDiv = Ext.query('#loading')[0];
-		//loadingDiv.parentNode.removeChild(loadingDiv);
-	}
 });

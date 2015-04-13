@@ -1150,7 +1150,7 @@ Ext.define('LIME.controller.Editor', {
                 force_p_newlines : false,
                 forced_root_block : '',
                 // Custom CSS
-                content_css : Config.baseDir + '/resources/tiny_mce/css/content.css',
+                content_css : Config.baseUrl + 'resources/tiny_mce/css/content.css',
 
                 // the editor mode
                 mode : 'textareas',
