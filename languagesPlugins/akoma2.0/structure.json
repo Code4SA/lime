@@ -1,5 +1,5 @@
 {
-    "schemaRegex": "xmlns=\"(http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD\\d+)\"",
+    "schemaRegex": "xmlns=\"(http://www.akomantoso.org/2.0)\"",
 	"docTypes": [
 		{
 			"name": "bill",
@@ -66,27 +66,6 @@
 			]
 		}, {
 			"name": "amendment",
-			"locales": [
-				{
-					"name": "ke"
-				}, {
-					"name": "uy"
-				}, {
-					"name": "ch"
-				}, {
-					"name": "it"
-				}, {
-					"name": "cl"
-				}, {
-					"name": "eu"
-				}, {
-					"name": "uk"
-				}, {
-					"name": "us"
-				}
-			]
-		}, {
-			"name": "statment",
 			"locales": [
 				{
 					"name": "ke"
