@@ -57,7 +57,7 @@ Ext.define('LIME.Global', {
 
     extensionScripts : ['LoadPlugin', 'Language', 'SavePlugin', 'TranslatePlugin'],
 
-    language : 'default',
+    language : 'akoma2.0',
 
     // LIME base URL. Leave blank for the path at which the app page is loaded.
     // The LIME_base_url variable is injected by app.js.
