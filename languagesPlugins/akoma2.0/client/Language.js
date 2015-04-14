@@ -55,7 +55,7 @@ Ext.define('LIME.ux.Language', {
     name : 'Akoma ntoso',
 
     config : {
-        elementIdAttribute: "eId",
+        elementIdAttribute: "id",
         attributePrefix: "akn_",
         metadataStructure : {},
         abbreviations : {
@@ -130,13 +130,7 @@ Ext.define('LIME.ux.Language', {
     },
 
     skipGeneratingId: function( node ) {
-        var workThis = node.querySelector('[class="FRBRWork"] [class="FRBRthis"]');
-        workThis = (workThis) ? workThis.getAttribute('value') : false;
-
-        if ( workThis && (workThis == '/uy/bill/camera/2008-02-25/carpeta1055-2008/main' || 
-                workThis == '/uy/doc/beto/2009-09-09/19541/main' ) ) {
-            return true;
-        }
+        return true;
     },
 
     /* Find elNum by counting the preceding elements with 

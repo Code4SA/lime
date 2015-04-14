@@ -19,15 +19,7 @@
     	<xsl:variable name="attName"><xsl:value-of select="substring-after(name(.),'_')"/></xsl:variable>
         <xsl:choose>
             <xsl:when test="substring-before(name(.),'_') = 'akn'">
-                <xsl:choose>
-                    <!-- In akomaNtoso 3.0 'id' attribute was replaced with 'eId' -->
-                    <xsl:when test="$attName = 'id'">
-                        <xsl:attribute name="eId"><xsl:value-of select="." /></xsl:attribute>
-                    </xsl:when>
-                    <xsl:otherwise>
-                        <xsl:attribute name="{$attName}"><xsl:value-of select="." /></xsl:attribute>
-                    </xsl:otherwise>
-                </xsl:choose>
+               <xsl:attribute name="{$attName}"><xsl:value-of select="." /></xsl:attribute>
             </xsl:when>
             <xsl:when test="name(.) = 'alternativeto' or
                         name(.) = 'name' or
