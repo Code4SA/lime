@@ -3,7 +3,6 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:akn3="http://docs.oasis-open.org/legaldocml/ns/akn/3.0/CSD13"
     xmlns="http://www.akomantoso.org/2.0"
     xmlns:xml="http://www.w3.org/XML/1998/namespace"
     exclude-result-prefixes="xs"
