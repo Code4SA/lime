@@ -53,9 +53,11 @@ Ext.define('LIME.Global', {
     alternateClassName : 'Config',
     uxPath : 'LIME.ux',
 
+    requires : ["LIME.Utilities", "LIME.Statics"],
+
     extensionScripts : ['LoadPlugin', 'Language', 'SavePlugin', 'TranslatePlugin'],
 
-    language : 'default',
+    language : 'akoma2.0',
 
     // LIME base URL. Leave blank for the path at which the app page is loaded.
     // The LIME_base_url variable is injected by app.js.

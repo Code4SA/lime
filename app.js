@@ -66,7 +66,6 @@ Ext.Loader.setConfig({
     enabled : true,
     paths   : {
         'LIME' : LIME_app,
-        'LIME.ux' : LIME_base_url + 'languagesPlugin',
         'LIME.conf' : LIME_base_url + 'config',
         'Ext' : LIME_base_url + 'ext/src',
 	'Ext.ux.layout.component.field.CodeMirror': LIME_base_url + 'plugins/ux/form/field/CodeMirror.js',
