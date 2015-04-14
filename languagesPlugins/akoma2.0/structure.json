@@ -110,13 +110,9 @@
 	],
 
 	"customViews": ["MarkingMenu"],
-	"plugins": ["aknPreview",
-				"consolidation",
-				"documentCollection",
-				"modsMarker", 
-				"notesManager",
-				"metadataManager",
-                "widgetManager"],
+	"plugins": [
+		"metadataManager",
+		"widgetManager"],
 	"transformationFiles": {
 		"languageToLIME": "AknToXhtml.xsl",
 		"LIMEtoLanguage": "HtmlToAkn.xsl"
