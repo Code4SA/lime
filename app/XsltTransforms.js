@@ -52,6 +52,7 @@ Ext.define('LIME.XsltTransforms', {
     /* Since this is merely a utility class define it as a singleton (static members by default) */
     singleton : true,
     alternateClassName : 'XsltTransforms', 
+    requires : ['LIME.Utilities'],
 
     config: {
         local: true,
@@ -105,10 +106,7 @@ Ext.define('LIME.XsltTransforms', {
 
     transformLocally: function(input, xsltfile, params, success, failure) {
         if (typeof(input) == "string") {
-            input = Ext.DomHelper.createDom({
-                tag : 'div',
-                html : input.replace(/\xa0/g, ' '),   // ignore &nbsp; chars
-            }).firstChild;
+            input = Utilities.parseXml(input);
         }
 
         this.loadTransform(xsltfile, function(xslt) {
