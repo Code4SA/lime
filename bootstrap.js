@@ -2214,7 +2214,7 @@ Ext.setVersion("ext-theme-neutral", "4.2.1");
     }
 
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/static/lime/develop/bootstrap.json', false);
+    xhr.open('GET', LIME_base_url + 'bootstrap.json', false);
     xhr.send(null);
 
     var options = eval("(" + xhr.responseText + ")"),
