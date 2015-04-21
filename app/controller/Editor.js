@@ -1446,7 +1446,7 @@ Ext.define('LIME.controller.Editor', {
                                 if(e.value && Ext.isFunction(e.value.indexOf) && e.value.indexOf('<table>') != -1) {
                                     var node = me.getSelectedNode(true);
                                     var config = Interpreters.getButtonConfig('table');
-                                    if (!me.getController('Marker').isAllowedMarking(node, config)) {
+                                    if (!me.getController('Marker').isAllowedMarking(node, node, config)) {
                                         e.preventDefault();
                                     }
                                 }
